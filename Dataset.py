@@ -15,13 +15,8 @@ class NumberDataset(Dataset):
         label_path=os.path.join(path,'ann')
         self.let2int=let2int
 
-        #номера
-        self.image_numbers=[img[:-4] for img in os.listdir(img_path)]
-        self.label_numbers=[label[:-5] for label in os.listdir(label_path)]
-        
-        #изображения и лейблы 
-        self.images=[os.path.join(img_path,img) for img in os.listdir(img_path) if img[:-4] in self.label_numbers]
-        self.labels=[os.path.join(label_path,label) for label in os.listdir(label_path) if label[:-5] in self.image_numbers]
+        self.images=[os.path.join(img_path,img) for img in os.listdir(img_path)]
+        self.labels=[os.path.join(label_path,label) for label in os.listdir(label_path)]
         
         self.images.sort(reverse=True)
         self.labels.sort(reverse=True)

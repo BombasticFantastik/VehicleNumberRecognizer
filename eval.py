@@ -24,4 +24,8 @@ if f'crnn_weights.pth' in os.listdir('../VehicleNumberData/VNR_Data/weights/'):
     model.load_state_dict(weights_dict)
     print('Веса обнаружены')
 
-Eval(model=model,dataloader=eval_number_dataloader,device=device,blank=0,int2let=int2let)
+#Eval(model=model,dataloader=eval_number_dataloader,device=device,blank=0,int2let=int2let)
+
+def Eval_from_main(cnt):
+    for i in range(cnt):
+        Eval(model=model,dataloader=eval_number_dataloader,device=device,blank=0,int2let=int2let)

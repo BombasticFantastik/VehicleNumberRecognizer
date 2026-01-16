@@ -28,4 +28,6 @@ if f'crnn_weights.pth' in os.listdir('../VehicleNumberData/VNR_Data/weights/'):
 optimizer=AdamW(model.parameters())
 loss_fn=nn.CTCLoss(blank=0)
 
-Train(model=model,optimizer=optimizer,loss_fn=loss_fn,dataloader=number_dataloader,device=device)
+def Train_from_main(cnt):
+    for i in range(cnt):
+        Train(model=model,optimizer=optimizer,loss_fn=loss_fn,dataloader=number_dataloader,device=device)
