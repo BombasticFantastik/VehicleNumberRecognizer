@@ -89,11 +89,11 @@ class CRNN(Module):
 
         self.stn=STN()
 
-        self.cnn=Resnet34(3,64)
+        self.cnn=Resnet34(input_size,hidden_size)
         self.rnn=nn.LSTM(hidden_size*8,hidden_size*4,num_layers=1,bidirectional=True)
         self.final_lay=nn.Sequential(    
-            nn.Dropout(p=0.1),
-            nn.Linear(512,out_size)
+            nn.Dropout(p=0.2),
+            nn.Linear(hidden_size*8,out_size)
         )
                 
     def forward(self,x):

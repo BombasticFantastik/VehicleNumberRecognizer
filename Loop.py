@@ -69,4 +69,4 @@ def Eval(model,dataloader,device='cpu',blank='_',int2let=None):
         print(f'Средняя точность на тестовой выборке равна {sum(all_accuracy)/len(all_accuracy)}')
         break
             
-        
+        #7
