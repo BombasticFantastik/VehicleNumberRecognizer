@@ -1,7 +1,5 @@
 import click
 import os
-from train import Train_from_main
-from eval import Eval_from_main
 
 @click.command()
 @click.argument("option", default='train')
@@ -11,12 +9,14 @@ def hello(option,count):
     """Меню позволяющее выбрать режим программы"""
     match option:
         case 'train':
+            from train import Train_from_main
             print(20*'_')
             print('ЗАПУСКА ОБУЧЕНИЯ')
             print(20*'_')
             Train_from_main(count)
                 
         case 'eval':
+            from eval import Eval_from_main
             print(20*'_')
             print('ЗАПУСК ТЕСТИРОВАНИЯ')
             print(20*'_')
