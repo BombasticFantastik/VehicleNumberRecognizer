@@ -7,6 +7,13 @@ from Dataset import collate_fn
 from torch import nn
 from torch.optim import AdamW
 from Loop import Train
+import yaml
+
+option_path='config.yaml'
+with open(option_path,'r') as file_option:
+    option=yaml.safe_load(file_option)
+
+
 
 device = 'cuda'
 
@@ -20,8 +27,8 @@ number_dataloader=DataLoader(number_data,batch_size=16,shuffle=False,drop_last=T
 
 model=CRNN(input_size=3,hidden_size=64,out_size=len(alphabet)).to(device)
 
-if f'crnn_weights.pth' in os.listdir('../VehicleNumberData/VNR_Data/weights/'):
-    weights_dict=torch.load(f'../VehicleNumberData/VNR_Data/weights/crnn_weights.pth',weights_only=True)
+if os.path.isfile(option['weights']):
+    weights_dict=torch.load(option['weights'],weights_only=True)
     model.load_state_dict(weights_dict)
     print('Веса обнаружены')
 

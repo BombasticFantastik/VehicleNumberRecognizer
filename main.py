@@ -1,10 +1,21 @@
 import click
 import os
+import yaml
+
+
+option_path='config.yaml'
+with open(option_path,'r') as file_option:
+    files_option=yaml.safe_load(file_option)
 
 @click.command()
 @click.argument("option", default='train')
 @click.argument("count", default=1)
 @click.help_option('--help','-h',help='Показывает инструкции')
+
+
+    
+
+
 def hello(option,count):
     """Меню позволяющее выбрать режим программы"""
     match option:
@@ -25,7 +36,7 @@ def hello(option,count):
             print(20*'_')
             print('СБРОС ВЕСОВ')
             print(20*'_')
-            os.remove('/home/artemybombastic/MyGit/VehicleNumberData/VNR_Data/weights/crnn_weights.pth')
+            os.remove(files_option['weights'])
     #click.echo(f"Выбран {option} режим!")
 
 if __name__ == "__main__":

@@ -1,5 +1,10 @@
 import torch
 from tqdm import tqdm
+import yaml
+
+option_path='config.yaml'
+with open(option_path,'r') as file_option:
+    option=yaml.safe_load(file_option)
 
 def Train(model,optimizer,loss_fn,dataloader,device='cpu'):
     model.train()
@@ -25,7 +30,7 @@ def Train(model,optimizer,loss_fn,dataloader,device='cpu'):
         
         #pbar.set_descriptiont()
     try:
-        torch.save(model.state_dict(),r'../VehicleNumberData/VNR_Data/weights/crnn_weights.pth')
+        torch.save(model.state_dict(),option['weights'])
     except:
         print('Ошибка загрузки')
     print(f'mean_loss: {sum(losses)/len(losses)}')

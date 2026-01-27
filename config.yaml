@@ -1,0 +1,6 @@
+data:
+  train: '//home/artemybombastic/MyGit/VehicleNumberData/VNR_Data/train'
+  eval: //home/artemybombastic/MyGit/VehicleNumberData/VNR_Data/val
+
+weights: /home/artemybombastic/MyGit/VehicleNumberData/VNR_Data/weights/crnn_weights.pth
+
