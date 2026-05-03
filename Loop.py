@@ -13,6 +13,7 @@ def Train(model,optimizer,loss_fn,dataloader,device='cpu'):
     for batch in (pbar:=tqdm(dataloader)):
         optimizer.zero_grad()
         img,label,label_len=batch
+        print(img.shape)
         pred=model(img.to(device))
 
         T = pred.size(0)
